@@ -1,0 +1,53 @@
+{
+  "name": "experiments-service",
+  "license": "ISC",
+  "version": "0.1.0",
+  "description": "Experiments service for creating A/B tests using lib sixpack-client",
+  "author": "Luís Felipe Leal de Faria <felipelealdefaria@gmail.com> (https://github.com/felipelealdefaria)",
+  "keywords": [
+    "experiments",
+    "typescript",
+    "A/B tests",
+    "sixpack-client",
+    "clean architecture"
+  ],
+  "homepage": "https://github.com/felipelealdefaria/experiments-service#readme",
+  "bugs": {
+    "url": "https://github.com/felipelealdefaria/experiments-service/issues"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "build": "rm -rf dist && babel src/libs/hooks -d dist",
+    "test": "jest --passWithNoTests --no-cache --runInBand",
+    "test:watch": "npm test -- --watch",
+    "test:staged": "npm test -- --findRelatedTests",
+    "test:ci": "npm test -- --coverage"
+  },
+  "devDependencies": {
+    "@types/faker": "^5.1.5",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.10",
+    "@typescript-eslint/eslint-plugin": "^4.9.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "eslint": "^7.14.0",
+    "eslint-config-standard-with-typescript": "^11.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "faker": "^5.1.0",
+    "git-commit-msg-linter": "^3.0.0",
+    "husky": "^4.3.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^25.5.4",
+    "lint-staged": "^10.5.2",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.13",
+    "typescript": "^4.1.2",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.1"
+  },
+  "dependencies": {}
+}
