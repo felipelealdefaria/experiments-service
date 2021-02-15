@@ -1,13 +1,13 @@
-import { Experiments } from '@/domain/experiments'
+import * as Exp from '@/domain/experiments'
 import { ExperimentsParams } from '@/data/experiments-params'
 
-export class ExperimentsService implements Experiments {
-  baseUrl: string
+export class ExperimentsService implements Exp.Experiments {
+  baseUrl = 'http://127.0.0.1:5000'
   constructor (
     private readonly experiment: ExperimentsParams
   ) {}
 
-  async init ({ baseUrl }: Experiments.InitParams): Promise<any> {
+  async init ({ baseUrl }: Exp.InitParams): Promise<any> {
     this.baseUrl = baseUrl
     const session = await this.experiment.startExperiment({ baseUrl })
     return session
@@ -18,7 +18,7 @@ export class ExperimentsService implements Experiments {
     session,
     variationsName,
     experimentName
-  }: Experiments.ParticipateParams): Promise<Experiments.ParticipateResponse> {
+  }: Exp.ParticipateParams): Promise<Exp.ParticipateResponse> {
     if (!session) session = await this.init({ baseUrl: this.baseUrl })
 
     const force = this.forceVariant(`force-${experimentName}`)
@@ -38,7 +38,7 @@ export class ExperimentsService implements Experiments {
     kpi,
     session,
     experimentName
-  }: Experiments.ConvertParams): Promise<void> {
+  }: Exp.ConvertParams): Promise<void> {
     if (!session) session = await this.init({ baseUrl: this.baseUrl })
 
     await this.experiment.convertEvent({

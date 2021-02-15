@@ -1,10 +1,10 @@
 import faker from 'faker'
-import { Experiments } from '@/domain/experiments'
+import * as Exp from '@/domain/experiments'
 
 const shareParams = {
   session: {
-    convert: () => {},
-    participate: () => {}
+    convert: jest.fn(),
+    participate: jest.fn()
   },
   variations: ['a', 'b'],
   kpi: faker.lorem.word(),
@@ -12,27 +12,27 @@ const shareParams = {
   alternativeName: faker.random.arrayElement(['a', 'b'])
 }
 
-export const mockInitParams = () => ({
+export const mockInitParams = (): Exp.InitParams => ({
   baseUrl: faker.internet.url()
 })
 
-export const mockInitResponse = () => ({
+export const mockInitResponse = (): any => ({
   session: shareParams.session
 })
 
-export const mockParticipateParams = (): Experiments.ParticipateParams => ({
+export const mockParticipateParams = (): Exp.ParticipateParams => ({
   session: shareParams.session,
   traffic: faker.random.number(),
   variationsName: shareParams.variations,
   experimentName: shareParams.experimentName
 })
 
-export const mockParticipateResponse = (): Experiments.ParticipateResponse => ({
+export const mockParticipateResponse = (): Exp.ParticipateResponse => ({
   experimentName: shareParams.experimentName,
   alternativeName: shareParams.alternativeName
 })
 
-export const mockConvertParams = (): Experiments.ConvertParams => ({
+export const mockConvertParams = (): Exp.ConvertParams => ({
   kpi: shareParams.kpi,
   session: shareParams.session,
   experimentName: shareParams.experimentName

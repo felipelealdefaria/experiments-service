@@ -1,17 +1,17 @@
-import { Experiments } from '@/domain/experiments'
+import * as Exp from '@/domain/experiments'
 import * as mockData from '@/data/tests/mock-data'
 
-export class ExperimentSpy implements Experiments {
-  async init (params: Experiments.InitParams): Promise<any> {
+export class ExperimentSpy implements Exp.Experiments {
+  init (params: Exp.InitParams): any {
     const res = mockData.mockInitResponse()
     return { session: res.session }
   }
 
-  async participate (params: Experiments.ParticipateParams): Promise<Experiments.ParticipateResponse> {
-    const res = mockData.mockParticipateResponse()
+  async participate (params: Exp.ParticipateParams): Promise<Exp.ParticipateResponse> {
+    const res = await mockData.mockParticipateResponse()
     const { experimentName } = params
     return { experimentName, alternativeName: res.alternativeName }
   }
 
-  async convert (params: Experiments.ConvertParams): Promise<void> {}
+  async convert (params: Exp.ConvertParams): Promise<void> { await console.log('') }
 }
