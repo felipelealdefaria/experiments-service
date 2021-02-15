@@ -37,7 +37,7 @@ convert({ session, experimentName: string, kpi?: string }): Promise<void>
 ```
 return (
   <>
-    {res.alternativeName === 'variant_option'} ? <ComponentA /> : <ComponentB />
+    { res.alternativeName === 'variant_option'} ? <ComponentA /> : <ComponentB /> }
   </>
 )
 ```
