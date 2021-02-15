@@ -42,7 +42,7 @@ return (
 )
 ```
 
-[OBS] To force variate, insert in browser cookies:
+[OBS] To force the variation, insert in your browser cookies:
 
 ```
 key: force-${experimentName}
