@@ -1,5 +1,6 @@
 import * as Exp from '@/data/experiments-params'
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const sixpack = require('sixpack-client')
 
 export class SixpackExperiments implements Exp.ExperimentsParams {
@@ -32,8 +33,10 @@ export class SixpackExperiments implements Exp.ExperimentsParams {
           force,
           (error: any, result: any): any => {
             if (error) return reject(error)
-
             if (result) {
+              if (result.status === 'failed') {
+                console.error('[PARTICIPATE] REQUEST ERROR: ', result?.error)
+              }
               return resolve({
                 experimentName: result?.experiment?.name,
                 alternativeName: result?.alternative?.name
@@ -56,7 +59,6 @@ export class SixpackExperiments implements Exp.ExperimentsParams {
         if (!session) return console.error('[CONVERT] SESSION NOT FOUND')
 
         session.convert(experimentName, kpi, (_null: null, result: any): any => {
-          if (result?.err) return reject(result?.err)
           if (result?.status) {
             return resolve({
               status: result?.status,
