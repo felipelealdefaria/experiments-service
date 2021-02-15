@@ -6,19 +6,22 @@
   },
   "extends": [
     "standard-with-typescript",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
   ],
-  "plugins": [
-    "react"
-  ],
+  "plugins": ["react"],
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./tsconfig-eslint.json"
   },
   "rules": {
-    "react/jsx-uses-vars": "error",
-    "react/jsx-uses-react": "error",
-    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
-    "@typescript-eslint/consistent-type-definitions": "off"
+    "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/comma-spacing": "off",
+    "@typescript-eslint/return-await": "off",
+    "@typescript-eslint/no-namespace": "off",
+    "no-redeclare": "off",
+    "import/export": "off",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error"
   }
 }

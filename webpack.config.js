@@ -2,15 +2,19 @@ const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
-  mode: 'production',
-  entry: './src/index.ts',
+  mode: 'development',
+  entry: './src/index.tsx',
   output: {
-    publicPath: '/',
-    filename: 'bundle.js',
-    path: path.join(__dirname, 'dist')
+    path: path.join(__dirname, 'public/js'),
+    publicPath: '/public/js',
+    filename: 'bundle.js'
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    fallback: {
+      http: require.resolve('stream-http'),
+      buffer: require.resolve('buffer/')
+    },
+    extensions: ['.ts', '.tsx', '.js', '.scss'],
     alias: {
       '@': path.join(__dirname, 'src')
     }
@@ -20,7 +24,28 @@ module.exports = {
       test: /\.ts(x?)$/,
       loader: 'ts-loader',
       exclude: /node_modules/
+    }, {
+      test: /\.scss$/,
+      use: [{
+        loader: 'style-loader'
+      }, {
+        loader: 'css-loader',
+        options: {
+          modules: true
+        }
+      }, {
+        loader: 'sass-loader'
+      }]
     }]
+  },
+  devServer: {
+    contentBase: './public',
+    writeToDisk: true,
+    historyApiFallback: true
+  },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM'
   },
   plugins: [
     new CleanWebpackPlugin()
