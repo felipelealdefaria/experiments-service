@@ -11,7 +11,7 @@ npm i experiments-service
 
 ### Usage
 
-1) Initialize:
+**1) Initialize:**
 
 ```
 import { experiment } from 'experiments-service'
@@ -19,20 +19,20 @@ import { experiment } from 'experiments-service'
 const session = await experiment.init({ baseUrl: string }): Promise<InitResponse>
 ```
 
-2) Experiment Participate:
+**2) Experiment Participate:**
 
 ```
 const res = await experiment.participate({ session, experimentName: string, variationsName: string[], traffic?: number (default: 1) }): Promise<ParticipateResponse>
 console.log(res) // { experimentName: string, alternativeName: string }
 ```
 
-3) Experiment Convert:
+**3) Experiment Convert:**
 
 ```
 convert({ session, experimentName: string, kpi?: string }): Promise<void>
 ```
 
-4) A/B Test:
+**4) A/B Test:**
 
 ```
 return (
@@ -42,7 +42,7 @@ return (
 )
 ```
 
-[OBS] To force the variation, insert in your browser cookies:
+**[OBS] To force the variation, insert in your browser cookies:**
 
 ```
 key: force-${experimentName}
