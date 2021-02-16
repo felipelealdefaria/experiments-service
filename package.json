@@ -1,7 +1,7 @@
 {
   "name": "@felipelealdefaria/experiments-service",
   "license": "ISC",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Experiments service for creating A/B tests using lib sixpack-client",
   "author": "Luís Felipe Leal de Faria <felipelealdefaria@gmail.com> (https://github.com/felipelealdefaria)",
   "keywords": [
@@ -15,13 +15,14 @@
   "bugs": {
     "url": "https://github.com/felipelealdefaria/experiments-service/issues"
   },
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "test": "jest --passWithNoTests --no-cache --runInBand",
     "test:watch": "npm test -- --watch",
     "test:staged": "npm test -- --findRelatedTests",
-    "test:ci": "npm test -- --coverage"
+    "test:ci": "npm test -- --coverage",
+    "prepublish": "npm run build"
   },
   "devDependencies": {
     "@testing-library/react": "^11.2.2",
