@@ -17,7 +17,6 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open",
     "build": "webpack --config webpack.config.js",
     "test": "jest --passWithNoTests --no-cache --runInBand",
     "test:watch": "npm test -- --watch",
