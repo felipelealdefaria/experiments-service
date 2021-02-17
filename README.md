@@ -4,9 +4,9 @@ Experiments service for creating A/B tests using lib [sixpack-js](https://github
 ### Installation
 
 ```bash
-yarn add experiments-service
+yarn add @felipelealdefaria/experiments-service
 # or
-npm i experiments-service
+npm i @felipelealdefaria/experiments-service
 ```
 
 ### Usage
