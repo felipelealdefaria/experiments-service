@@ -1,5 +1,3 @@
-import makeExperimentService from '@/main/factories'
+import { makeExperimentService } from '@/main/factories'
 
-const experiment = makeExperimentService()
-
-export default experiment
+export default makeExperimentService
