@@ -1,7 +1,7 @@
 {
   "name": "@felipelealdefaria/experiments-service",
   "license": "ISC",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "Experiments service for creating A/B tests using lib sixpack-client",
   "author": "Luís Felipe Leal de Faria <felipelealdefaria@gmail.com> (https://github.com/felipelealdefaria)",
   "keywords": [
@@ -28,10 +28,6 @@
     "test:watch": "npm test -- --watch",
     "test:staged": "npm test -- --findRelatedTests",
     "test": "jest --passWithNoTests --no-cache --runInBand",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
