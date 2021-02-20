@@ -1,5 +1,1 @@
-import makeExperimentService from '@/main/factories'
-
-const experiment = makeExperimentService()
-
-export default experiment
+export * from '@/main/factories/experiment'
