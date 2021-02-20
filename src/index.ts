@@ -1,3 +1,1 @@
-import { makeExperimentService } from '@/main/factories'
-
-export default makeExperimentService
+export * from '@/main/factories/experiment'

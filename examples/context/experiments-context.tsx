@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 import type * as E from './experiments-types'
 
 import slugify from 'slugify'
-import { experiment } from 'experiments-service'
+import { experiment } from '@felipelealdefaria/experiments-service'
 
 const ExperimentsContext = createContext<E.ExperimentsContextParams>({} as E.ExperimentsContextParams)
 
