@@ -14,7 +14,7 @@ npm i @felipelealdefaria/experiments-service
 **1) Initialize:**
 
 ```
-import { experiment } from 'experiments-service'
+import { experiment } from '@felipelealdefaria/experiments-service'
 
 const session = await experiment.init({ baseUrl: string }): Promise<InitResponse>
 ```
@@ -47,6 +47,21 @@ return (
 ```
 key: force-${experimentName}
 value: ${variation_option}
+```
+
+### Possible error for those using webpack
+
+The dependency of the project, **sixpack-client** has incompatibility with some versions of the webpack. The common error in this case may be linked to not being able to resolve the **http** and **buffer** dependencies.
+
+To fix it, in your **webpack.config.js** file:
+
+``` // webpack.config.js
+resolve: {
+    fallback: {
+      http: require.resolve('stream-http'),
+      buffer: require.resolve('buffer/')
+    }
+}
 ```
 
 ### Service's Architecture
