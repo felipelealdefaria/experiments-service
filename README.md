@@ -13,7 +13,7 @@ npm i @felipelealdefaria/experiments-service
 
 **1) Initialize:**
 
-```
+```javascript
 import { experiment } from '@felipelealdefaria/experiments-service'
 
 const session = await experiment.init({ baseUrl: string }): Promise<InitResponse>
@@ -21,20 +21,20 @@ const session = await experiment.init({ baseUrl: string }): Promise<InitResponse
 
 **2) Experiment Participate:**
 
-```
+```javascript
 const res = await experiment.participate({ session, experimentName: string, variationsName: string[], traffic?: number (default: 1) }): Promise<ParticipateResponse>
 console.log(res) // { experimentName: string, alternativeName: string }
 ```
 
 **3) Experiment Convert:**
 
-```
+```javascript
 convert({ session, experimentName: string, kpi?: string }): Promise<void>
 ```
 
 **4) A/B Test:**
 
-```
+```javascript
 return (
   <>
     { res.alternativeName === 'variant_option'} ? <ComponentA /> : <ComponentB /> }
@@ -55,7 +55,7 @@ The dependency of the project, **sixpack-client** has incompatibility with some 
 
 To fix it, in your **webpack.config.js** file:
 
-``` // webpack.config.js
+``` // javascript
 resolve: {
     fallback: {
       http: require.resolve('stream-http'),
