@@ -8,7 +8,7 @@ jobs:
 
     steps:
     - name: Experiments
-      uses: actions/experiments@v1
+      uses: actions/checkout@v1
 
     - name: MakeTest
       run: |
