@@ -92,7 +92,6 @@ ConvertParams
 - kpi?: string
 - session: unknown
 - experimentName: string
-}
 ```
 ```bash
 ConvertResponse
