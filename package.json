@@ -53,7 +53,7 @@
     "rollup": "^2.39.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-typescript2": "^0.30.0",
-    "slugify": "^1.4.6",
+    "slugify": "^1.5.1",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.13",
     "ttypescript": "^1.5.12",
