@@ -7,13 +7,15 @@
     "project": "./tsconfig-eslint.json"
   },
   "rules": {
+    "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/comma-spacing": "off",
     "@typescript-eslint/return-await": "off",
     "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/no-unused-vars": "off",
     "no-redeclare": "off",
-    "import/export": "off",
+    "import/export": "off"
   }
 }
