@@ -1,15 +1,26 @@
 export interface ExperimentsParams {
-  startExperiment: (params: StartExperimentParams) => Promise<any>
   convertEvent: (params: ConvertParams) => Promise<ConvertResponse>
   participateExperiment: (params: ParticipateParams) => Promise<ParticipateResponse>
+  startExperiment: (params: StartExperimentParams) => Promise<StartExperimentResponse>
+}
+
+export type StatusResponse = {
+  error?: boolean
+  success?: boolean
+  message?: string
 }
 
 export type StartExperimentParams = {
   baseUrl: string
+  timeout?: number
 }
 
+export type StartExperimentResponse = {
+  session: unknown
+} & StatusResponse
+
 export type ParticipateParams = {
-  session: any
+  session: unknown
   traffic?: number
   force: string | null
   variationsName: string[]
@@ -17,20 +28,18 @@ export type ParticipateParams = {
 }
 
 export type ParticipateResponse = {
-  status: string
-  experimentName: string
-  alternativeName: string
-}
+  experimentName?: string | null
+  alternativeName?: string | null
+} & StatusResponse
 
 export type ConvertParams = {
   kpi?: string
-  session: any
+  session: unknown
   experimentName: string
 }
 
 export type ConvertResponse = {
   kpi?: string
-  status: string
-  experimentName: string
-  alternativeName: string
-}
+  experimentName?: string
+  alternativeName?: string
+} & StatusResponse
