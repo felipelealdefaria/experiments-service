@@ -69,7 +69,6 @@ ParticipateParams
 - traffic?: number (default: 1) // means 50% for each variable
 - variationsName: string[]
 - experimentName: string
-}
 ```
 ```bash
 ParticipateResponse
@@ -128,7 +127,7 @@ The dependency of the project, **sixpack-client** has incompatibility with some 
 
 To fix it, in your **webpack.config.js** file:
 
-``` // webpack.config.js
+``` // javascript
 resolve: {
     fallback: {
       http: require.resolve('stream-http'),
