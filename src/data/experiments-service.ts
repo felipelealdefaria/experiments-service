@@ -19,9 +19,13 @@ export class ExperimentsService implements Exp.Experiments {
 
   async participate ({ traffic, session, variationsName, experimentName }: Exp.ParticipateParams): Promise<Exp.ParticipateResponse> {
     if (!session) session = await this.init({ baseUrl: this.baseUrl })
+    if (!session) return { error: true, message: 'session not exists', experimentName: null, alternativeName: null }
 
-    const force: string | null = this.forceVariant(`force-${experimentName}`)
-    const res: Exp.ParticipateResponse = await this.experiment.participateExperiment({ force, session, experimentName, variationsName, traffic: traffic || 1 })
+    let experimentNameFormatted: string = experimentName
+    if (experimentName) experimentNameFormatted = this.formattedString(experimentName)
+
+    const force: string | null = this.forceVariant(`force-${experimentNameFormatted}`)
+    const res: Exp.ParticipateResponse = await this.experiment.participateExperiment({ force, session, experimentName: experimentNameFormatted, variationsName, traffic: traffic || 1 })
 
     if (res?.success) return { success: true, experimentName: res?.experimentName, alternativeName: res?.alternativeName }
     return { error: true, experimentName: null, alternativeName: null }
@@ -29,6 +33,7 @@ export class ExperimentsService implements Exp.Experiments {
 
   async convert ({ kpi, session, experimentName }: Exp.ConvertParams): Promise<Exp.ConvertResponse> {
     if (!session) session = await this.init({ baseUrl: this.baseUrl })
+    if (!session) return { error: true, message: 'session not exists' }
 
     let kpiFormatted: string | undefined = kpi
     if (kpi) kpiFormatted = this.formattedString(kpi)
@@ -47,11 +52,11 @@ export class ExperimentsService implements Exp.Experiments {
     return null
   }
 
-  formattedString (kpi: string): string {
+  formattedString (string: string): string {
     try {
-      return slugify(kpi, { lower: true, strict: true, replacement: '_' })
+      return slugify(string, { lower: true, strict: true, replacement: '_' })
     } catch (error) {
-      return kpi.replace(/\s/g, '_').toLowerCase()
+      return string.replace(/\s/g, '_').toLowerCase()
     }
   }
 }
