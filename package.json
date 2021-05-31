@@ -1,7 +1,7 @@
 {
   "name": "@felipelealdefaria/experiments-service",
   "license": "MIT",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "description": "Experiments service for creating A/B tests using lib sixpack-client",
   "author": "Luís Felipe Leal de Faria <felipelealdefaria@gmail.com> (https://github.com/felipelealdefaria)",
   "keywords": [
